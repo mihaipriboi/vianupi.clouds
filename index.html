@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link rel="stylesheet" href="style.css">
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.3/dist/teachablemachine-image.min.js"></script>
+<script src="script.js"></script>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+  <div class="item">
+    <h1>Cloud type machine learning model</h1>
+
+    <div id='webcam-container'></div>
+
+    <div class="button-container">
+      <button type='button' onclick='startWebcam()'>Start Camera</button>
+      <button type='button' onclick='stopWebcam()'>Stop Camera</button>
+      <button type='button'>Upload Image</button>
+    </div>
+
+    <div id='label-container'></div>
+
+    <div class="credits">This machine learning model was created using <i>Teachable Machine</i> and trained by AstroPi team <i>VianuPI</i></div>
+  </div>
+
+  <div class="item">
+    <h1>Cloud types</h1>
+
+    <h2>High Clouds (16,500-45,000 feet)</h2>
+
+    <h3>&nbsp;○&nbsp; Cirrus</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://scied.ucar.edu/sites/default/files/media/images/cirrus6_big.jpg" alt="cirrus">
+      <div class="image-ref">
+        <p>Lisa Gardiner</p>
+        <p>scied.ucar.edu</p>
+      </div>
+    </div>
+
+    <p>Cirrus clouds are delicate, feathery clouds that are made mostly of ice crystals. Their wispy shape comes from wind currents which twist and spread the ice crystals into strands.</p>
+    <p class="predict">Weather prediction: A change is on its way!</p>
+
+
+    <h3>&nbsp;○&nbsp; Cirrostratus</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://scied.ucar.edu/sites/default/files/media/images/cirrostratus1_big.jpg" alt="cirrostratus">
+      <div class="image-ref">
+        <p>Anne Pharamond</p>
+        <p>scied.ucar.edu</p>
+      </div>
+    </div>
+
+    <p>Cirrostratus clouds are thin, white clouds that cover the whole sky like a veil. These clouds are most commonly seen in the winter, and can cause the appearance of a halo around the sun or the moon.</p>
+    <p class="predict">Weather prediction: Rain or snow will arrive within 24 hours!</p>
+    
+
+    <h3>&nbsp;○&nbsp; Cirrocumulus</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://scied.ucar.edu/sites/default/files/media/images/cirrocumulus1_big.jpg" alt="cirrocumulus">
+      <div class="image-ref">
+        <p>UCAR</p>
+        <p>scied.ucar.edu</p>
+      </div>
+    </div>
+
+    <p>Cirrocumulus clouds are thin, sometimes patchy, sheet-like clouds. They sometimes look like they’re full of ripples or are made of small grains.</p>
+    <p class="predict">Weather prediction: Fair, but cold. However, if you live in a tropical region, these clouds could be a sign of an approaching hurricane!</p>
+
+
+    <h2>Mid-level Clouds (6,500-23,000 feet)</h2>
+
+    <h3>&nbsp;○&nbsp; Altocumulus</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://scied.ucar.edu/sites/default/files/media/images/altocumulus1_big.jpg" alt="altocumulus">
+      <div class="image-ref">
+        <p>UCAR</p>
+        <p>scied.ucar.edu</p>
+      </div>
+    </div>
+
+    <p>Altocumulus clouds have several patchy white or gray layers, and seem to be made up of many small rows of fluffy ripples. They are lower than cirrus clouds, but still quite high. They are made of liquid water, but they don’t often produce rain.</p>
+    <p class="predict">Weather prediction: Fair!</p>
+
+
+    <h3>&nbsp;○&nbsp; Altostratus</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://scied.ucar.edu/sites/default/files/media/images/altostratus3_big.jpg" alt="altostratus">
+      <div class="image-ref">
+        <p>Keith G. Diem</p>
+        <p>scied.ucar.edu</p>
+      </div>
+    </div>
+
+    <p>Altostratus clouds are gray or blue-gray mid-level clouds composed of ice crystals and water droplets. The clouds usually cover the entire sky.</p>
+    <p class="predict">Weather prediction: Be prepared for continuous rain or snow!</p>
+
+
+    <h3>&nbsp;○&nbsp; Nimbostratus</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://scied.ucar.edu/sites/default/files/media/images/nimbostratus1_big.jpg" alt="nimbostratus">
+      <div class="image-ref">
+        <p>Peggy LeMone</p>
+        <p>scied.ucar.edu</p>
+      </div>
+    </div>
+
+    <p>Nimbostratus clouds are dark, gray clouds that seem to fade into falling rain or snow. They are so thick that they often blot out the sunlight.</p>
+    <p class="predict">Weather prediction: Gloomy with continuous rain or snow!</p>
+
+
+    <h2>Low Clouds (less than 6,500 feet)</h2>
+
+    <h3>&nbsp;○&nbsp; Cumulus</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://scied.ucar.edu/sites/default/files/media/images/cumulus3_big.jpg" alt="cumulus">
+      <div class="image-ref">
+        <p>Carlye Calvin/UCAR</p>
+        <p>scied.ucar.edu</p>
+      </div>
+    </div>
+
+    <p>Cumulus clouds look like fluffy, white cotton balls in the sky. They are beautiful in sunsets, and their varying sizes and shapes can make them fun to observe!</p>
+    <p class="predict">Weather prediction: Fair!</p>
+
+
+    <h3>&nbsp;○&nbsp; Stratus</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://scied.ucar.edu/sites/default/files/media/images/stratus2_big.jpg" alt="stratus">
+      <div class="image-ref">
+        <p>Sara Martin</p>
+        <p>scied.ucar.edu</p>
+      </div>
+    </div>
+
+    <p>Stratus cloud often look like thin, white sheets covering the whole sky. Since they are so thin, they seldom produce much rain or snow. Sometimes, in the mountains or hills, these clouds appear to be fog.</p>
+    <p class="predict">Weather prediction: Fair, but gloomy!</p>
+
+
+    <h3>&nbsp;○&nbsp; Cumulonimbus</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://scied.ucar.edu/sites/default/files/media/images/cumulonimbus3_big.jpg" alt="cumulonimbus">
+      <div class="image-ref">
+        <p>UCAR</p>
+        <p>scied.ucar.edu</p>
+      </div>
+    </div>
+
+    <p>Cumulonimbus clouds grow on hot days when warm, wet air rises very high into the sky. From far away, they look like huge mountains or towers.</p>
+    <p class="predict">Weather prediction: Look out for rain, hail, and tornadoes!</p>
+
+
+    <h3>&nbsp;○&nbsp; Stratocumulus</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://scied.ucar.edu/sites/default/files/media/images/stratocumulus1_big.jpg" alt="stratocumulus">
+      <div class="image-ref">
+        <p>Carlye Calvin/UCAR</p>
+        <p>scied.ucar.edu</p>
+      </div>
+    </div>
+
+    <p>Stratocumulus clouds are patchy gray or white clouds that often have a dark honeycomb-like appearance.</p>
+    <p class="predict">Weather prediction: Fair weather for now, but a storm might be on its way!</p>
+
+
+    <h2>Special Clouds</h2>
+
+    <h3>&nbsp;○&nbsp; Contrails</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://scied.ucar.edu/sites/default/files/media/images/contrail_big.jpg" alt="contrails">
+      <div class="image-ref">
+        <p>Susan Gallagher</p>
+        <p>scied.ucar.edu</p>
+      </div>
+    </div>
+
+    <p>Contrails are made by high-flying jet airplanes. They are still clouds, though, because they are made of water droplets condensed from the water vapor in the exhaust of the jet engines.</p>
+    <p class="predict">Weather prediction: Contrails can provide information about the layers of moisture in the sky!</p>
+    
+    
+    <h3>&nbsp;○&nbsp; Mammatus</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://scied.ucar.edu/sites/default/files/media/images/mammatus_big.jpg" alt="contrails">
+      <div class="image-ref">
+        <p>Gregory Thompson</p>
+        <p>scied.ucar.edu</p>
+      </div>
+    </div>
+
+    <p>Mammatus clouds are actually altocumulus, cirrus, cumulonimbus, or other types of clouds that have these pouch-like shapes hanging out of the bottom. The pouches are created when cold air within the cloud sinks down toward the Earth.</p>
+    <p class="predict">Weather prediction: Severe weather might be on its way!</p>
+    
+
+    <h3>&nbsp;○&nbsp; Orographic</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://www.eoas.ubc.ca/courses/atsc113/snow/met_concepts/06-met_concepts/06e-orographic-uplift-lee-shadowing/images-06e/orographicuplift1.jpg" alt="orographic">
+      <div class="image-ref">
+        <p>NOAA</p>
+        <p>www.eoas.ubc.ca</p>
+      </div>
+    </div>
+
+    <p>Orographic clouds get their shape from mountains or hills that force the air to move over or around them. They can also be formed by sea breezes and often appear as lines where two air masses meet.</p>
+    <p class="predict">Weather prediction: An early sign that the conditions might be right to form afternoon thunderstorms!</p>
+
+
+    <h3>&nbsp;○&nbsp; Lenticular</h3>
+
+    <div class="image-container">
+      <img class="cloud-img" src="https://scied.ucar.edu/sites/default/files/media/images/lenticular1_big.jpg" alt="lenticular">
+      <div class="image-ref">
+        <p>UCAR</p>
+        <p>scied.ucar.edu</p>
+      </div>
+    </div>
+
+    <p>Lenticular clouds are shaped like lenses or almonds or...flying saucers! They may get their shape from hilly terrain or just the way the air is rising over flat terrain.</p>
+    <p class="predict">Weather prediction: None!</p>
+
+
+
+    <div class="credits">The data was sourced from scijinks.gov/clouds, and the images from scied.ucar.edu, all for educational purposes.</div>
+  </div>
+</div>
+
+</body>
+
+</html>
